@@ -44,7 +44,7 @@ struct Board: Hashable {
     
     var isSolved: Bool {
         let b = arr.filter { $0.id == 3 }.first!
-        return Board.solvedPiece == b
+        return b.x == 1 && b.y == 3
     }
     
     var spaces: [Piece] {

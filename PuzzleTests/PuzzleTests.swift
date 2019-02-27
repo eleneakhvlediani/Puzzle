@@ -128,10 +128,15 @@ class PuzzleTests: XCTestCase {
         XCTAssertEqual(board.spaces.count, 2)
     }
     
+    func testToInt() {
+        XCTAssertEqual("a".toInt, 2)
+        XCTAssertEqual(" ".toInt, 1)
+    }
+    
     func testPerformanceExample() {
         let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
         let solve = Solver.shared.search(board: board)
-        XCTAssert(solve.count > 0)
+        XCTAssert(solve!.count > 0)
     }
     
 }

@@ -15,7 +15,7 @@ extension String {
             return 1
         }
         if let ind = alphabet.index(where: { $0.description == self }) {
-            return alphabet.distance(from: startIndex, to: ind) + 1
+            return alphabet.distance(from: startIndex, to: ind) + 2
         }
         return Int(self)!
     }
