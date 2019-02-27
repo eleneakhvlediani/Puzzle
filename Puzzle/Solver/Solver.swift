@@ -11,9 +11,10 @@ import Foundation
 class Solver {
     static var shared: Solver = Solver()
     private init() { }
-    func search(board: Board) -> [Board]? {
+    func solvePuzzle(for board: Board) -> [Board]? {
         var queue = Queue<Board>()
         var seenStates = Set<Board>()
+        seenStates.insert(board)
         queue.enqueue(board)
         while !queue.isEmpty {
             var currentState = queue.dequeue()!

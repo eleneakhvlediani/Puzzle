@@ -10,14 +10,7 @@ import XCTest
 @testable import Puzzle
 
 class PuzzleTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
+
     func testCreateBoard() {
         let board = Board(texts: ["22 ","34 "])
         let a = board.getPiece(2)!
@@ -133,10 +126,9 @@ class PuzzleTests: XCTestCase {
         XCTAssertEqual(" ".toInt, 1)
     }
     
-    func testPerformanceExample() {
+    func testRealExample() {
         let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
-        let solve = Solver.shared.search(board: board)
+        let solve = Solver.shared.solvePuzzle(for: board)
         XCTAssert(solve!.count > 0)
     }
-    
 }

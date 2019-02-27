@@ -12,65 +12,18 @@ let b = 3
 let z = 30
 let space = 1
 
-extension String {
-    func substring(_ from: Int) -> String {
-        let start = index(startIndex, offsetBy: from)
-        let end = index(startIndex, offsetBy: from + 1)
-        return String(self[start ..< end])
-    }
-}
-
-struct Board: Hashable {
+struct Board {
     static let solvedPiece = Piece(width: 2, height: 2, x: 1, y: 3, id: 3)
-    var typeBoard: [[Int8]]!
-  
-    var hashValue: Int {
-        return typeBoard.description.hashValue
-    }
-    
-    static func == (lhs: Board, rhs: Board) -> Bool {
-        for i in 0..<lhs.typeBoard.count {
-            for j in 0..<lhs.typeBoard[i].count {
-                if lhs.typeBoard[i][j] != rhs.typeBoard[i][j] {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-    var board: [[Int]] = [[Int]]()
-    var prevBoards = [Board]()
+    let typeBoard: [[Int8]]
+    let board: [[Int]]
+    let prevBoards: [Board]
     
     var isSolved: Bool {
-        let b = getPiece(3)
-        return b?.x == 1 && b?.y == 3
+        let b = getPiece(Board.solvedPiece.id)
+        return b == Board.solvedPiece
     }
     
-    lazy var spaces: [Piece] = findSpaces()
-    
-    init(board: [[Int]]) {
-        self.board = board
-        typeBoard = board.map { arr -> [Int8] in
-            arr.map { $0.toType }
-        }
-    }
-    
-    init(texts: [String]) {
-        var b = [[Int]]()
-        for i in 0..<texts.count {
-            var newArr = [Int]()
-            let str = texts[i]
-            for j in 0..<texts[i].count {
-                let subs = str.substring(j)
-                newArr.append(subs.toInt)
-            }
-            b.append(newArr)
-        }
-        self.init(board: b)
-        printBoard()
-    }
-    
-    private func findSpaces() -> [Piece] {
+    lazy var spaces: [Piece]  = {
         var spaces = [Piece]()
         (0..<board[0].count).forEach { j in
             (0..<board.count).forEach { i in
@@ -80,6 +33,29 @@ struct Board: Hashable {
             }
         }
         return spaces
+    }()
+    
+    init(board: [[Int]], prevBoards: [Board] = []) {
+        self.board = board
+        self.prevBoards = prevBoards
+        typeBoard = board.map { arr -> [Int8] in
+            arr.map { $0.toType }
+        }
+    }
+    
+    init(texts: [String], prevBoards: [Board] = []) {
+        var b = [[Int]]()
+        for i in 0..<texts.count {
+            var newArr = [Int]()
+            let str = texts[i]
+            for j in 0..<str.count {
+                let subs = str.substring(j)
+                newArr.append(subs.toInt)
+            }
+            b.append(newArr)
+        }
+        self.init(board: b, prevBoards: prevBoards)
+        printBoard()
     }
     
     func getPiece(_ id: Int) -> Piece? {
@@ -108,14 +84,7 @@ struct Board: Hashable {
         }
         return nil
     }
-    
-    func printBoard() {
-        print("current board")
-        (0..<board.count).forEach { i in
-            print(board[i])
-        }
-    }
-    
+
     func move(piece: Piece) -> [Board] {
         var boards = [Board]()
         moveLeftPiece(piece: piece).flatMap { boards.append ($0) }
@@ -123,6 +92,13 @@ struct Board: Hashable {
         moveTopPiece(piece: piece).flatMap { boards.append ($0) }
         moveBottomPiece(piece: piece).flatMap { boards.append ($0) }
         return boards
+    }
+    
+    func printBoard() {
+        print("current board")
+        (0..<board.count).forEach { i in
+            print(board[i])
+        }
     }
     
     private func moveLeftPiece(piece: Piece) -> Board? {
@@ -133,9 +109,7 @@ struct Board: Hashable {
         if let leftNeighbour = getPiece(left),
             leftNeighbour.isMovable,
             let arrr = leftNeighbour.goRight(on: self) {
-                var new = Board(board: arrr)
-                new.prevBoards = self.prevBoards + [self]
-                return new
+                return Board(board: arrr, prevBoards: self.prevBoards + [self])
             }
         
         return nil
@@ -149,9 +123,7 @@ struct Board: Hashable {
         if let rightNeighbour = getPiece(right),
             rightNeighbour.isMovable,
             let arrr = rightNeighbour.goLeft(on: self)  {
-                var new = Board(board: arrr)
-                new.prevBoards = self.prevBoards + [self]
-                return new
+                return Board(board: arrr, prevBoards: self.prevBoards + [self])
         }
         return nil
     }
@@ -164,9 +136,7 @@ struct Board: Hashable {
         if let topNeighbour = getPiece(top),
             topNeighbour.isMovable,
             let arrr = topNeighbour.goDown(on: self)  {
-            var new = Board(board: arrr)
-            new.prevBoards = self.prevBoards + [self]
-            return new
+            return Board(board: arrr, prevBoards: self.prevBoards + [self])
         }
         return nil
     }
@@ -179,11 +149,25 @@ struct Board: Hashable {
         if let bottomNeighbour = getPiece(bottom),
             bottomNeighbour.isMovable,
             let arrr = bottomNeighbour.goUp(on: self)  {
-            var new = Board(board: arrr)
-            new.prevBoards = self.prevBoards + [self]
-            return new
+            return Board(board: arrr, prevBoards: self.prevBoards + [self])
         }
         return nil
     }
+}
 
+extension Board: Hashable {
+    static func == (lhs: Board, rhs: Board) -> Bool {
+        for i in 0..<lhs.typeBoard.count {
+            for j in 0..<lhs.typeBoard[i].count {
+                if lhs.typeBoard[i][j] != rhs.typeBoard[i][j] {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    var hashValue: Int {
+        return typeBoard.description.hashValue
+    }
 }
