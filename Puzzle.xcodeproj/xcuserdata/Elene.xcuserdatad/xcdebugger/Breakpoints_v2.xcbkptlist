@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PuzzleTests/PuzzleTests.swift"
-            timestampString = "573002272.461916"
+            timestampString = "573003109.449495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -298,45 +298,125 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PuzzleTests/PuzzleTests.swift"
-            timestampString = "573002272.4621511"
+            timestampString = "573003109.450484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "testRealExample()"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "testMoveDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puzzle/Solver/Board.swift"
+            timestampString = "573003109.451021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "getPiece(_:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PuzzleTests.PuzzleTests.testPerformanceExample() -&gt; ()"
-                  moduleName = "PuzzleTests"
+                  symbolName = "Puzzle.Board.getPiece(Swift.Int) -&gt; Swift.Optional&lt;Puzzle.Piece&gt;"
+                  moduleName = "Puzzle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Elene/workspace/Puzzle/PuzzleTests/PuzzleTests.swift"
-                  timestampString = "573000370.324132"
+                  urlString = "file:///Users/Elene/workspace/Puzzle/Puzzle/Solver/Board.swift"
+                  timestampString = "573002795.697952"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "590">
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "91">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "implicit closure #1 : @autoclosure () throws -&gt; Swift.Bool in PuzzleTests.PuzzleTests.testPerformanceExample() -&gt; ()"
-                  moduleName = "PuzzleTests"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in Puzzle.Board.getPiece(Swift.Int) -&gt; Swift.Optional&lt;Puzzle.Piece&gt;"
+                  moduleName = "Puzzle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Elene/workspace/Puzzle/PuzzleTests/PuzzleTests.swift"
-                  timestampString = "573000370.327933"
+                  urlString = "file:///Users/Elene/workspace/Puzzle/Puzzle/Solver/Board.swift"
+                  timestampString = "573002795.713201"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "139"
-                  endingLineNumber = "139"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "66">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puzzle/Solver/Board.swift"
+            timestampString = "573003109.45112"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "getPiece(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puzzle/Solver/Board.swift"
+            timestampString = "573003109.451213"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "getPiece(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puzzle/Solver/Solver.swift"
+            timestampString = "573003109.451293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "solvePuzzle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Puzzle/Solver/Board.swift"
+            timestampString = "573003109.451364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "isSolved(for:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

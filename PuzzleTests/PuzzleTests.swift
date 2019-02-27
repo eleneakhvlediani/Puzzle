@@ -128,7 +128,7 @@ class PuzzleTests: XCTestCase {
     
     func testRealExample() {
         let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
-        let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, id: 3))
+        let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
         XCTAssert(solver.solvePuzzle()!.count > 0)
     }
 }
