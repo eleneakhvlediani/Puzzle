@@ -16,7 +16,7 @@ class Solver {
         var seenStates = Set<Board>()
         queue.enqueue(board)
         while !queue.isEmpty {
-            let currentState = queue.dequeue()!
+            var currentState = queue.dequeue()!
             if currentState.isSolved {
                 print("Solved!!!  ")
                 return currentState.prevBoards + [currentState]
