@@ -8,19 +8,6 @@
 
 import Foundation
 
-let alphabet = "abcdefghijklmnopqrstuvwxyz"
-extension String {
-    var toInt: Int {
-        if self == " " {
-            return 1
-        }
-        if let ind = alphabet.index(where: { $0.description == self }) {
-            return alphabet.distance(from: startIndex, to: ind) + 2
-        }
-        return Int(self)!
-    }
-}
-
 extension Int {
     var toType: Int8 {
         switch self {

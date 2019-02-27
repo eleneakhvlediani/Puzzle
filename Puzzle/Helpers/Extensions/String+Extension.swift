@@ -14,4 +14,16 @@ extension String {
         let end = index(startIndex, offsetBy: from + 1)
         return String(self[start ..< end])
     }
+   
+    var toInt: Int {
+        let alphabet = "abcdefghijklmnopqrstuvwxyz"
+        if self == " " {
+            return 1
+        }
+        if let ind = alphabet.index(where: { $0.description == self }) {
+            return alphabet.distance(from: startIndex, to: ind) + 2
+        }
+        return Int(self)!
+    }
+    
 }

@@ -8,20 +8,12 @@
 
 import Foundation
 
-let b = 3
-let z = 30
 let space = 1
 
 struct Board {
-    static let solvedPiece = Piece(width: 2, height: 2, x: 1, y: 3, id: 3)
     let typeBoard: [[Int8]]
     let board: [[Int]]
     let prevBoards: [Board]
-    
-    var isSolved: Bool {
-        let b = getPiece(Board.solvedPiece.id)
-        return b == Board.solvedPiece
-    }
     
     lazy var spaces: [Piece]  = {
         var spaces = [Piece]()
@@ -56,6 +48,11 @@ struct Board {
         }
         self.init(board: b, prevBoards: prevBoards)
         printBoard()
+    }
+    
+    func isSolved(for solvedPiece: Piece) -> Bool {
+        let currentPiece = getPiece(solvedPiece.id)
+        return currentPiece == solvedPiece
     }
     
     func getPiece(_ id: Int) -> Piece? {

@@ -9,16 +9,21 @@
 import Foundation
 
 class Solver {
-    static var shared: Solver = Solver()
-    private init() { }
-    func solvePuzzle(for board: Board) -> [Board]? {
+    let initialBoard: Board
+    let targetPiece: Piece
+    init(board: Board, targetPiece: Piece) {
+        initialBoard = board
+        self.targetPiece = targetPiece
+    }
+    
+    func solvePuzzle() -> [Board]? {
         var queue = Queue<Board>()
         var seenStates = Set<Board>()
-        seenStates.insert(board)
-        queue.enqueue(board)
+        seenStates.insert(initialBoard)
+        queue.enqueue(initialBoard)
         while !queue.isEmpty {
             var currentState = queue.dequeue()!
-            if currentState.isSolved {
+            if currentState.isSolved(for: targetPiece) {
                 print("Solved!!!  ")
                 return currentState.prevBoards + [currentState]
             }
