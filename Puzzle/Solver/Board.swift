@@ -8,8 +8,6 @@
 
 import Foundation
 
-let space = 1
-
 struct Board {
     let typeBoard: [[Int8]]
     let board: [[Int]]
@@ -19,8 +17,8 @@ struct Board {
         var spaces = [Piece]()
         (0..<board[0].count).forEach { j in
             (0..<board.count).forEach { i in
-                if board[i][j] == space {
-                    spaces.append(Piece(width: 1, height: 1, x: j, y: i, id: space))
+                if board[i][j] == .spaceId {
+                    spaces.append(Piece(width: 1, height: 1, x: j, y: i, id: Int.spaceId))
                 }
             }
         }
@@ -69,7 +67,7 @@ struct Board {
                     if y == nil {
                         y = i
                     }
-                    if id != space {
+                    if id != .spaceId {
                         pieceWidth = j - x! + 1
                         pieceHeight = i - y! + 1
                     }

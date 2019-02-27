@@ -9,20 +9,21 @@
 import Foundation
 
 extension Int {
+    static var spaceId: Int {
+        return " ".toInt
+    }
     var toType: Int8 {
         switch self {
         case 0:
             return 0
-        case 1:
+        case 1, 3, 4, 6:
             return 1
-        case 2, 4, 5, 7:
+        case 2:
             return 2
-        case 3:
+        case 5:
             return 3
-        case 6:
+        case 7, 8, 9, 10:
             return 4
-        case 8, 9, 10, 11:
-            return 5
         default:
             fatalError()
         }

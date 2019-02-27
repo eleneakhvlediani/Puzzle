@@ -18,10 +18,10 @@ extension String {
     var toInt: Int {
         let alphabet = "abcdefghijklmnopqrstuvwxyz"
         if self == " " {
-            return 1
+            return 0
         }
         if let ind = alphabet.index(where: { $0.description == self }) {
-            return alphabet.distance(from: startIndex, to: ind) + 2
+            return alphabet.distance(from: startIndex, to: ind) + 1
         }
         return Int(self)!
     }
