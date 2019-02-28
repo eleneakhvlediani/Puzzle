@@ -12,7 +12,7 @@ class PieceView: UIView {
     let boardLayer = CALayer()
 
     func updateBoard(to board: [[Int]]) {
-        var size = Double(UIScreen.main.bounds.width - 40.0) / Double(board[0].count)        
+        let size = Double(UIScreen.main.bounds.width - 40.0) / Double(board[0].count)        
         boardLayer.backgroundColor = UIColor.red.cgColor
         boardLayer.frame = CGRect(x: 0,
                                   y: 0,

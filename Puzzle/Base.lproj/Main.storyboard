@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,16 +21,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="LOg-CB-VBv">
-                                <rect key="frame" x="177" y="333.5" width="20" height="20"/>
+                                <rect key="frame" x="177" y="505.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Solved!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ2-V5-Nhi">
+                                <rect key="frame" x="146.5" y="502" width="83" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.20679909299999999" blue="0.40438247729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzd-jd-mnY">
-                                <rect key="frame" x="87.5" y="318.5" width="200" height="50"/>
+                                <rect key="frame" x="87.5" y="490.5" width="200" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.20679909302055888" blue="0.40438247733002697" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uzd-jd-mnY" secondAttribute="height" multiplier="4:1" id="05c-Rl-TBh"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gjT-yg-jOX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
                                 <state key="normal" title="Solve Puzzle">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -43,17 +50,20 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96678675518134716" green="0.96678675518134716" blue="0.96678675518134716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LOg-CB-VBv" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="0dn-O9-ERw"/>
+                            <constraint firstItem="hJ2-V5-Nhi" firstAttribute="centerX" secondItem="uzd-jd-mnY" secondAttribute="centerX" id="Ool-dh-9UM"/>
                             <constraint firstItem="uzd-jd-mnY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bxx-uU-yb9"/>
-                            <constraint firstItem="uzd-jd-mnY" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="lCy-b4-3at"/>
+                            <constraint firstItem="hJ2-V5-Nhi" firstAttribute="centerY" secondItem="uzd-jd-mnY" secondAttribute="centerY" id="gQI-fB-HLE"/>
+                            <constraint firstItem="uzd-jd-mnY" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="lCy-b4-3at"/>
+                            <constraint firstItem="LOg-CB-VBv" firstAttribute="centerY" secondItem="uzd-jd-mnY" secondAttribute="centerY" id="qNv-lI-7Pq"/>
                             <constraint firstItem="LOg-CB-VBv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tv8-xl-WZm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="LOg-CB-VBv" id="eaU-PR-7Ch"/>
+                        <outlet property="resultLabel" destination="hJ2-V5-Nhi" id="JsI-2d-nPM"/>
                         <outlet property="solveButton" destination="uzd-jd-mnY" id="onv-yt-3Cx"/>
                     </connections>
                 </viewController>

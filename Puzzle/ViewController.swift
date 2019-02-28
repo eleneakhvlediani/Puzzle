@@ -11,14 +11,15 @@ import UIKit
 class ViewController: UIViewController {
     var pieceView: PieceView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var solveButton: UIButton!
     let viewModel = ViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         pieceView = PieceView()
-        pieceView.isHidden = true
         pieceView.frame = CGRect(x: 20, y: 50, width: UIScreen.main.bounds.width - 40, height: 500)
         view.addSubview(pieceView)
+        pieceView.updateBoard(to: viewModel.initialBoard.board)
     }
     
     func updateBoard(boards: [Board], pos: Int) {
@@ -38,8 +39,8 @@ class ViewController: UIViewController {
         activityIndicator.startAnimating()
         viewModel.solve { [weak self] boards in
             DispatchQueue.main.async {
+                self?.resultLabel.isHidden = false
                 self?.activityIndicator.stopAnimating()
-                self?.pieceView.isHidden = false
                 self?.updateBoard(boards: boards, pos: 0)
             }
         }
