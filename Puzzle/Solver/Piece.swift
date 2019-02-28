@@ -64,7 +64,7 @@ struct Piece {
     }
     
     private func canGoDown(for board: Board) -> Bool {
-        if y >= board.board.count - 1 { return false }
+        if y + width > board.board.count { return false }
         for i in 0..<width {
             if board.board[y + height][x + i] != .spaceId &&
                 board.board[y + height][x + i] != id {
