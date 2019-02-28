@@ -42,7 +42,7 @@ struct Piece {
     }
     
     private func canGoRight(for board: Board) -> Bool {
-        if x + height > board.board[0].count { return false }
+        if x + width >= board.board[0].count { return false }
         for i in 0..<height {
             if board.board[y + i][x + width] != .spaceId  &&
                 board.board[y + i][x + width] != id {
@@ -64,7 +64,7 @@ struct Piece {
     }
     
     private func canGoDown(for board: Board) -> Bool {
-        if y + width > board.board.count { return false }
+        if y + height >= board.board.count { return false }
         for i in 0..<width {
             if board.board[y + height][x + i] != .spaceId &&
                 board.board[y + height][x + i] != id {
@@ -80,10 +80,8 @@ struct Piece {
         }
         var copy = board.board
         for i in 0..<height {
-            for j in 0..<width {
-                copy[y + i][x + j - 1] = id
-                copy[y + i][x + j] = .spaceId
-            }
+            copy[y + i][x - 1] = copy[y + i][x + width - 1]
+            copy[y + i][x + width - 1] = .spaceId
         }
         return copy
     }
@@ -94,12 +92,8 @@ struct Piece {
         }
         var copy = board.board
         for i in 0..<height {
-            var left = Int.spaceId
-            for j in 0..<width + 1 {
-                let newLeft = copy[y + i][x + j]
-                copy[y + i][x + j] = left
-                left = newLeft
-            }
+            copy[y + i][x + width] = copy[y + i][x]
+            copy[y + i][x] = .spaceId
         }
         return copy
     }
@@ -110,10 +104,8 @@ struct Piece {
         }
         var copy = board.board
         for i in 0..<width {
-            for j in 0..<height {
-                copy[y + j - 1][x + i] = id
-                copy[y + j][x + i] = .spaceId
-            }
+            copy[y - 1][x + i] = id
+            copy[y + height - 1][x + i] = .spaceId
         }
         return copy
     }
@@ -124,10 +116,8 @@ struct Piece {
         }
         var copy = board.board
         for i in 0..<width {
-            for j in 0..<height {
-                copy[y + j + 1][x + i] = id
-                copy[y][x + i] = .spaceId
-            }
+            copy[y + height][x + i] = id
+            copy[y][x + i] = .spaceId
         }
         return copy
     }
@@ -142,4 +132,3 @@ extension Piece: Equatable {
                 lhs.id == rhs.id        
     }
 }
-

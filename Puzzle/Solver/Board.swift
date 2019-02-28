@@ -11,7 +11,7 @@ import Foundation
 struct Board {
     let typeBoard: [[Int8]]
     let board: [[Int]]
-    let prevBoards: [Board]
+    var value: Int64
     
     lazy var spaces: [Piece]  = {
         var spaces = [Piece]()
@@ -25,15 +25,22 @@ struct Board {
         return spaces
     }()
     
-    init(board: [[Int]], prevBoards: [Board] = []) {
+    init(board: [[Int]]) {
         self.board = board
-        self.prevBoards = prevBoards
         typeBoard = board.map { arr -> [Int8] in
             arr.map { $0.toType }
         }
+        value = 0
+        var currentPower: Int64 = 1
+        for i in 0..<board.count {
+            for j in 0..<(board[i].count) {
+                value = value + (Int64(typeBoard[i][j]) * currentPower)
+                currentPower = currentPower * Int64(Int.typeCount)
+            }
+        }
     }
     
-    init(texts: [String], prevBoards: [Board] = []) {
+    init(texts: [String]) {
         var b = [[Int]]()
         for i in 0..<texts.count {
             var newArr = [Int]()
@@ -44,7 +51,7 @@ struct Board {
             }
             b.append(newArr)
         }
-        self.init(board: b, prevBoards: prevBoards)
+        self.init(board: b)
         printBoard()
     }
     
@@ -104,7 +111,7 @@ struct Board {
         if let leftNeighbour = getPiece(left),
             leftNeighbour.isMovable,
             let arrr = leftNeighbour.goRight(on: self) {
-                return Board(board: arrr, prevBoards: self.prevBoards + [self])
+                return Board(board: arrr)
             }
         
         return nil
@@ -118,7 +125,7 @@ struct Board {
         if let rightNeighbour = getPiece(right),
             rightNeighbour.isMovable,
             let arrr = rightNeighbour.goLeft(on: self)  {
-                return Board(board: arrr, prevBoards: self.prevBoards + [self])
+                return Board(board: arrr)
         }
         return nil
     }
@@ -131,7 +138,7 @@ struct Board {
         if let topNeighbour = getPiece(top),
             topNeighbour.isMovable,
             let arrr = topNeighbour.goDown(on: self)  {
-            return Board(board: arrr, prevBoards: self.prevBoards + [self])
+            return Board(board: arrr)
         }
         return nil
     }
@@ -144,25 +151,8 @@ struct Board {
         if let bottomNeighbour = getPiece(bottom),
             bottomNeighbour.isMovable,
             let arrr = bottomNeighbour.goUp(on: self)  {
-            return Board(board: arrr, prevBoards: self.prevBoards + [self])
+            return Board(board: arrr)
         }
         return nil
-    }
-}
-
-extension Board: Hashable {
-    static func == (lhs: Board, rhs: Board) -> Bool {
-        for i in 0..<lhs.typeBoard.count {
-            for j in 0..<lhs.typeBoard[i].count {
-                if lhs.typeBoard[i][j] != rhs.typeBoard[i][j] {
-                    return false
-                }
-            }
-        }
-        return true
-    }
-    
-    var hashValue: Int {
-        return typeBoard.description.hashValue
     }
 }

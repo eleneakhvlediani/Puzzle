@@ -12,6 +12,9 @@ extension Int {
     static var spaceId: Int {
         return " ".toInt
     }
+    static var typeCount: Int {
+        return 5
+    }
     var toType: Int8 {
         switch self {
         case 0:
