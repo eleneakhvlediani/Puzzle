@@ -121,11 +121,11 @@ class PuzzleTests: XCTestCase {
         XCTAssertEqual(board.spaces.count, 2)
     }
     
-//    func testToInt() {
-//        XCTAssertEqual("a".toInt, 2)
-//        XCTAssertEqual(" ".toInt, 1)
-//    }
-//    
+    func testToInt() {
+        XCTAssertEqual("a".toInt, 1)
+        XCTAssertEqual(" ".toInt, 0)
+    }
+    
     func testRealExample() {
         let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
         let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
