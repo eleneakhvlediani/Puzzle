@@ -9,18 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     var pieceView: PieceView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var solveButton: UIButton!
+    let viewModel = ViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
-        let solver = Solver(board: board,
-                            targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
-        let boards = solver.solvePuzzle()
-        pieceView = PieceView(board: board.board)
+        pieceView = PieceView()
+        pieceView.isHidden = true
         pieceView.frame = CGRect(x: 20, y: 50, width: UIScreen.main.bounds.width - 40, height: 500)
         view.addSubview(pieceView)
-        updateBoard(boards: boards!, pos: 0)
     }
     
     func updateBoard(boards: [Board], pos: Int) {
@@ -33,12 +31,18 @@ class ViewController: UIViewController {
         }
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func solveButtonClicked(_ sender: UIButton) {
+        sender.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        viewModel.solve { [weak self] boards in
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.pieceView.isHidden = false
+                self?.updateBoard(boards: boards, pos: 0)
+            }
+        }
     }
-
-
 }
 

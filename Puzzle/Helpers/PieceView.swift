@@ -10,20 +10,9 @@ import Foundation
 import UIKit
 class PieceView: UIView {
     let boardLayer = CALayer()
-    init(board: [[Int]]) {
-        super.init(frame: .zero)
-        self.backgroundColor = .gray
-        updateBoard(to: board)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     func updateBoard(to board: [[Int]]) {
-        
-        var size = Double(UIScreen.main.bounds.width - 40.0) / Double(board[0].count)
-        
+        var size = Double(UIScreen.main.bounds.width - 40.0) / Double(board[0].count)        
         boardLayer.backgroundColor = UIColor.red.cgColor
         boardLayer.frame = CGRect(x: 0,
                                   y: 0,
