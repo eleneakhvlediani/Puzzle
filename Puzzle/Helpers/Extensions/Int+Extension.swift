@@ -40,25 +40,25 @@ extension Int {
         case 0:
             return .white
         case 1:
-            return .red
+            return UIColor(hexString: "5cc1b3")
         case 2:
-            return .green
+            return UIColor(hexString: "ff6473")
         case 3:
-            return .yellow
+            return UIColor(hexString: "757882")
         case 4:
-            return .blue
+            return UIColor(hexString: "6ef7c8")
         case 5:
-            return .brown
+            return UIColor(hexString: "309286")
         case 6:
-            return .cyan
+            return UIColor(hexString: "b4e9e2")
         case 7:
-            return .orange
+            return UIColor(hexString: "ebefd0")
         case 8:
-            return .purple
+             return UIColor(hexString: "acdbdf")
         case 9:
-            return .magenta
+            return UIColor(hexString: "69779b")
         case 10:
-            return .darkGray
+             return UIColor(hexString: "ff9d76")
         default:
             fatalError()
         }

@@ -23,6 +23,7 @@
 		B3F923B022275F4C008A1B6C /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F923AF22275F4C008A1B6C /* PieceView.swift */; };
 		B3F923B1222760FA008A1B6C /* PieceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F923AF22275F4C008A1B6C /* PieceView.swift */; };
 		B3F923B32228989F008A1B6C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F923B22228989F008A1B6C /* ViewModel.swift */; };
+		B3F923B52228AC66008A1B6C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F923B42228AC66008A1B6C /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B3F923AD22275E6F008A1B6C /* Piece+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Piece+Extension.swift"; sourceTree = "<group>"; };
 		B3F923AF22275F4C008A1B6C /* PieceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceView.swift; sourceTree = "<group>"; };
 		B3F923B22228989F008A1B6C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B3F923B42228AC66008A1B6C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				B3F9235A221CA11C008A1B6C /* Int+Extension.swift */,
 				B3F923A922274DA3008A1B6C /* String+Extension.swift */,
 				B3F923AD22275E6F008A1B6C /* Piece+Extension.swift */,
+				B3F923B42228AC66008A1B6C /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				B3F923AA22274DA3008A1B6C /* String+Extension.swift in Sources */,
 				B3F92327221B6353008A1B6C /* ViewController.swift in Sources */,
 				B3F92325221B6353008A1B6C /* AppDelegate.swift in Sources */,
+				B3F923B52228AC66008A1B6C /* UIColor+Extension.swift in Sources */,
 				B3F923B32228989F008A1B6C /* ViewModel.swift in Sources */,
 				B3F923AE22275E6F008A1B6C /* Piece+Extension.swift in Sources */,
 				B3F92359221B6393008A1B6C /* Solver.swift in Sources */,
