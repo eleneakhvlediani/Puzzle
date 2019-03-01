@@ -83,7 +83,8 @@ struct Piece {
             copy[y + i][x - 1] = copy[y + i][x + width - 1]
             copy[y + i][x + width - 1] = .spaceId
         }
-        return copy
+        let newPiece = Piece(width: width, height: height, x: x - 1, y: y, id: id)
+        return newPiece.goLeft(on: Board(board: copy)) ?? copy
     }
     
     func goRight(on board: Board) -> [[Int]]? {
@@ -95,7 +96,8 @@ struct Piece {
             copy[y + i][x + width] = copy[y + i][x]
             copy[y + i][x] = .spaceId
         }
-        return copy
+        let newPiece = Piece(width: width, height: height, x: x + 1, y: y, id: id)
+        return newPiece.goRight(on: Board(board: copy)) ?? copy
     }
     
     func goUp(on board: Board) -> [[Int]]? {
@@ -107,7 +109,8 @@ struct Piece {
             copy[y - 1][x + i] = id
             copy[y + height - 1][x + i] = .spaceId
         }
-        return copy
+        let newPiece = Piece(width: width, height: height, x: x, y: y - 1, id: id)
+        return newPiece.goUp(on: Board(board: copy)) ?? copy
     }
     
     func goDown(on board: Board) -> [[Int]]? {
@@ -119,7 +122,8 @@ struct Piece {
             copy[y + height][x + i] = id
             copy[y][x + i] = .spaceId
         }
-        return copy
+        let newPiece = Piece(width: width, height: height, x: x, y: y + 1, id: id)
+        return newPiece.goDown(on: Board(board: copy)) ?? copy
     }
 }
 

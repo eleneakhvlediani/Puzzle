@@ -101,7 +101,7 @@ class PuzzleTests: XCTestCase {
         up = board.getPiece(2)!.goUp(on: board)
         newA = Board(board: up!).getPiece(2)!
         XCTAssertEqual(newA.x, 0)
-        XCTAssertEqual(newA.y, 1)
+        XCTAssertEqual(newA.y, 0)
     }
     
     func testOnRealBoardDown() {
@@ -129,6 +129,6 @@ class PuzzleTests: XCTestCase {
     func testRealExample() {
         let board = Board(texts: ["abbc", "abbc", "deef", "dghf","i  j"])
         let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
-        XCTAssert(solver.solvePuzzle()!.count > 0)
+        XCTAssertEqual(solver.solvePuzzle()!.count, 93)
     }
 }
