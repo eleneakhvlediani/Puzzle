@@ -131,4 +131,10 @@ class PuzzleTests: XCTestCase {
         let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
         XCTAssertEqual(solver.solvePuzzle()!.count, 93)
     }
+    
+    func testOnNonSolveableBoard() {
+        let board = Board(texts: ["ighj", "bbcf", "bbcf", "d  a","deea"])
+        let solver = Solver(board: board, targetPiece: Piece(width: 2, height: 2, x: 1, y: 3, title: "b"))
+        XCTAssertNil(solver.solvePuzzle())
+    }
 }

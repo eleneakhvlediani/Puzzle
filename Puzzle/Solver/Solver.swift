@@ -47,6 +47,7 @@ class Solver {
                 queue.enqueue(array: newBoards)
             }
         }
+        print("Unable to solve board")
         return nil
     }
 }
