@@ -9,10 +9,41 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var pieceView: PieceView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var solveButton: UIButton!
+    let viewModel = ViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        pieceView = PieceView()
+        pieceView.frame = CGRect(x: 20, y: 50, width: UIScreen.main.bounds.width - 40, height: 500)
+        view.addSubview(pieceView)
+        pieceView.updateBoard(to: viewModel.initialBoard.board)
+    }
+    
+    func updateBoard(boards: [Board], pos: Int) {
+        if pos == boards.count {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.pieceView.updateBoard(to: boards[pos].board)
+            self.updateBoard(boards: boards, pos: pos + 1)
+        }
+
+    }
+    
+    @IBAction func solveButtonClicked(_ sender: UIButton) {
+        sender.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        viewModel.solve { [weak self] boards in
+            DispatchQueue.main.async {
+                self?.resultLabel.isHidden = false
+                self?.activityIndicator.stopAnimating()
+                self?.updateBoard(boards: boards, pos: 0)
+            }
+        }
     }
 }
 
